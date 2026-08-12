@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-charcoal-950 text-charcoal-800 dark:text-charcoal-100 font-sans transition-colors duration-300;
+}
+
+h1, h2, h3, h4 {
+  font-family: '"Playfair Display"', serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-charcoal-100 dark:bg-charcoal-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-amber-600 rounded-full;
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-lg shadow-amber-600/20 hover:shadow-amber-600/40 hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent border-2 border-charcoal-900 dark:border-white text-charcoal-900 dark:text-white hover:bg-charcoal-900 hover:text-white dark:hover:bg-white dark:hover:text-charcoal-900 font-medium px-6 py-3 rounded-md transition-all duration-300;
+  }
+
+  .input-field {
+    @apply w-full bg-white dark:bg-charcoal-900 border border-charcoal-200 dark:border-charcoal-700 rounded-md px-4 py-3 text-charcoal-900 dark:text-white placeholder-charcoal-400 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent transition-all;
+  }
+
+  .section-tag {
+    @apply inline-block text-amber-600 dark:text-amber-500 font-semibold tracking-widest uppercase text-xs mb-3;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl;
+  }
+}
