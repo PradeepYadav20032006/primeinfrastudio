@@ -6,6 +6,13 @@ import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
 
+// Local images
+import image1 from '../assets/images/image1.jpg';
+import image2 from '../assets/images/image2.jpg';
+import image3 from '../assets/images/image3.jpg';
+import image4 from '../assets/images/image4.jpg';
+import image5 from '../assets/images/image5.jpg';
+
 const ICONS = { Building2, Home: HomeIcon, Sofa, Hammer };
 
 const FALLBACK_SERVICES = [
@@ -13,7 +20,7 @@ const FALLBACK_SERVICES = [
     _id: '1', title: 'Residential Construction', icon: 'Home',
     shortDescription: 'End-to-end home building services with quality craftsmanship.',
     fullDescription: 'From foundation to finishing, we build homes that stand the test of time.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800',
+    image: image1,
     features: ['Custom Home Design', 'Structural Engineering', 'Quality Materials', 'On-time Delivery'],
     startingPrice: '₹1,800/sq.ft',
   },
@@ -21,7 +28,7 @@ const FALLBACK_SERVICES = [
     _id: '2', title: 'Commercial Construction', icon: 'Building2',
     shortDescription: 'Office spaces, retail units and industrial facilities built to scale.',
     fullDescription: 'We deliver commercial construction projects that balance functionality and compliance.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
+    image: image2,
     features: ['Office Buildings', 'Retail Spaces', 'Warehouses', 'Regulatory Compliance'],
     startingPrice: '₹2,200/sq.ft',
   },
@@ -29,7 +36,7 @@ const FALLBACK_SERVICES = [
     _id: '3', title: 'Interior Design', icon: 'Sofa',
     shortDescription: 'Bespoke interiors that reflect your personality and lifestyle.',
     fullDescription: 'Our interior design team crafts spaces that are as functional as they are beautiful.',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800',
+    image: image3,
     features: ['Space Planning', '3D Visualization', 'Custom Furniture', 'Lighting Design'],
     startingPrice: '₹950/sq.ft',
   },
@@ -37,7 +44,7 @@ const FALLBACK_SERVICES = [
     _id: '4', title: 'Renovation & Remodeling', icon: 'Hammer',
     shortDescription: 'Transform existing spaces into modern, functional environments.',
     fullDescription: 'We breathe new life into old structures through careful planning and modern materials.',
-    image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800',
+    image: image4,
     features: ['Kitchen Remodeling', 'Bathroom Upgrades', 'Structural Repairs', 'Facade Renewal'],
     startingPrice: '₹700/sq.ft',
   },
@@ -56,7 +63,7 @@ const Services = () => {
   return (
     <>
       <SEO title="Our Services" description="Explore PrimeInfraStudio's construction and interior design services: residential, commercial, interior design, and renovation." />
-      <PageHeader subtitle="What We Offer" title="Our Services" bgImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600" />
+      <PageHeader subtitle="What We Offer" title="Our Services" bgImage={image5} />
 
       <section className="section-padding bg-white dark:bg-charcoal-950">
         <div className="container-custom space-y-20">

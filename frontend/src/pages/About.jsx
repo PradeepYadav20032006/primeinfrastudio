@@ -11,6 +11,10 @@ import ramPrasadPhoto from '../assets/images/Ram.png';
 import premPhoto from '../assets/images/Prem.jpg';
 import sushilPhoto from '../assets/images/Sushil.jpg'; // Matches Sushil.jpg exactly
 
+// Local placeholder replacements
+import image1 from '../assets/images/image1.jpg';
+import image2 from '../assets/images/image2.jpg';
+
 const VALUES = [
   { icon: Target, title: 'Our Mission', text: 'To craft functional, beautiful spaces that exceed client expectations through quality craftsmanship and honest communication.' },
   { icon: Eye, title: 'Our Vision', text: 'To be the most trusted construction and interior design partner in Maharashtra, known for reliability and design excellence.' },
@@ -31,7 +35,7 @@ const About = () => (
     <PageHeader
       subtitle="Who We Are"
       title={`About ${COMPANY.name}`}
-      bgImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600"
+      bgImage={image1}
     />
 
     <section className="section-padding bg-white dark:bg-charcoal-950">
@@ -40,7 +44,7 @@ const About = () => (
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900"
+          src={image2}
           alt="Our story"
           className="rounded-2xl shadow-xl w-full h-[420px] object-cover"
         />

@@ -10,6 +10,9 @@ import customerApi from '../utils/customerApi';
 import { useCustomerAuth } from '../context/CustomerAuthContext';
 import { COMPANY } from '../utils/constants';
 
+// Local images
+import image3 from '../assets/images/image3.jpg';
+
 const Contact = () => {
   const { customer } = useCustomerAuth();
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -35,7 +38,7 @@ const Contact = () => {
   return (
     <>
       <SEO title="Contact Us" description="Get in touch with PrimeInfraStudio, Pune. Call, email, or visit our office to discuss your construction or interior design project." />
-      <PageHeader subtitle="Get In Touch" title="Contact Us" bgImage="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600" />
+      <PageHeader subtitle="Get In Touch" title="Contact Us" bgImage={image3} />
 
       <section className="section-padding bg-white dark:bg-charcoal-950">
         <div className="container-custom grid lg:grid-cols-3 gap-10">

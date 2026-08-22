@@ -7,6 +7,10 @@ import SectionTitle from '../components/SectionTitle';
 import api from '../utils/api';
 import { COMPANY } from '../utils/constants';
 
+// Local images
+import image1 from '../assets/images/image1.jpg';
+import image2 from '../assets/images/image2.jpg';
+
 const ICONS = { Building2, Home: HomeIcon, Sofa, Hammer };
 
 const STATS = [
@@ -56,7 +60,7 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(10,12,16,0.55), rgba(10,12,16,0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920')",
+              `linear-gradient(rgba(10,12,16,0.55), rgba(10,12,16,0.85)), url(${image1})`,
           }}
         />
         <div className="relative z-10 container-custom text-center pt-24">
@@ -127,7 +131,7 @@ const Home = () => {
             className="relative"
           >
             <img
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900"
+              src={image2}
               alt="PrimeInfraStudio construction site"
               className="rounded-2xl shadow-2xl w-full object-cover h-[420px]"
             />

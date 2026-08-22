@@ -6,12 +6,18 @@ import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
 
+// Local images
+import image1 from '../assets/images/image1.jpg';
+import image2 from '../assets/images/image2.jpg';
+import image3 from '../assets/images/image3.jpg';
+import image4 from '../assets/images/image4.jpg';
+
 const CATEGORIES = ['All', 'Residential', 'Commercial', 'Interior Design', 'Renovation', 'Industrial'];
 
 const FALLBACK_PROJECTS = [
-  { _id: 'f1', slug: 'serene-villa-baner', title: 'Serene Villa, Baner', category: 'Residential', location: 'Baner, Pune', coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900', year: 2024, area: '4500 sq.ft' },
-  { _id: 'f2', slug: 'horizon-business-park', title: 'Horizon Business Park', category: 'Commercial', location: 'Hinjewadi, Pune', coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900', year: 2023, area: '85000 sq.ft' },
-  { _id: 'f3', slug: 'minimalist-penthouse', title: 'Minimalist Penthouse Interiors', category: 'Interior Design', location: 'Koregaon Park, Pune', coverImage: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=900', year: 2024, area: '3200 sq.ft' },
+  { _id: 'f1', slug: 'serene-villa-baner', title: 'Serene Villa, Baner', category: 'Residential', location: 'Baner, Pune', coverImage: image1, year: 2024, area: '4500 sq.ft' },
+  { _id: 'f2', slug: 'horizon-business-park', title: 'Horizon Business Park', category: 'Commercial', location: 'Hinjewadi, Pune', coverImage: image2, year: 2023, area: '85000 sq.ft' },
+  { _id: 'f3', slug: 'minimalist-penthouse', title: 'Minimalist Penthouse Interiors', category: 'Interior Design', location: 'Koregaon Park, Pune', coverImage: image3, year: 2024, area: '3200 sq.ft' },
 ];
 
 const Projects = () => {
@@ -43,7 +49,7 @@ const Projects = () => {
   return (
     <>
       <SEO title="Our Projects" description="Browse PrimeInfraStudio's portfolio of residential, commercial, and interior design projects across Pune, Maharashtra." />
-      <PageHeader subtitle="Our Portfolio" title="Projects We've Delivered" bgImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600" />
+      <PageHeader subtitle="Our Portfolio" title="Projects We've Delivered" bgImage={image4} />
 
       <section className="section-padding bg-white dark:bg-charcoal-950">
         <div className="container-custom">

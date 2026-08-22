@@ -5,17 +5,24 @@ import PageHeader from '../components/PageHeader';
 import Lightbox from '../components/Lightbox';
 import api from '../utils/api';
 
+// Local images
+import image1 from '../assets/images/image1.jpg';
+import image2 from '../assets/images/image2.jpg';
+import image3 from '../assets/images/image3.jpg';
+import image4 from '../assets/images/image4.jpg';
+import image5 from '../assets/images/image5.jpg';
+
 const CATEGORIES = ['All', 'Interior', 'Exterior', 'Construction', 'Renovation', 'Landscape'];
 
 const FALLBACK_IMAGES = [
-  { _id: 'g1', title: 'Living Room Interior', category: 'Interior', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' },
-  { _id: 'g2', title: 'Villa Exterior', category: 'Exterior', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800' },
-  { _id: 'g3', title: 'Construction Site', category: 'Construction', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800' },
-  { _id: 'g4', title: 'Kitchen Renovation', category: 'Renovation', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800' },
-  { _id: 'g5', title: 'Garden Landscape', category: 'Landscape', image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800' },
-  { _id: 'g6', title: 'Office Interior', category: 'Interior', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800' },
-  { _id: 'g7', title: 'Commercial Building', category: 'Exterior', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800' },
-  { _id: 'g8', title: 'Bedroom Suite', category: 'Interior', image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800' },
+  { _id: 'g1', title: 'Living Room Interior', category: 'Interior', image: image1 },
+  { _id: 'g2', title: 'Villa Exterior', category: 'Exterior', image: image2 },
+  { _id: 'g3', title: 'Construction Site', category: 'Construction', image: image3 },
+  { _id: 'g4', title: 'Kitchen Renovation', category: 'Renovation', image: image4 },
+  { _id: 'g5', title: 'Garden Landscape', category: 'Landscape', image: image5 },
+  { _id: 'g6', title: 'Office Interior', category: 'Interior', image: image1 },
+  { _id: 'g7', title: 'Commercial Building', category: 'Exterior', image: image2 },
+  { _id: 'g8', title: 'Bedroom Suite', category: 'Interior', image: image3 },
 ];
 
 const Gallery = () => {
@@ -35,7 +42,7 @@ const Gallery = () => {
   return (
     <>
       <SEO title="Gallery" description="Browse photos of PrimeInfraStudio's construction and interior design work across Pune, Maharashtra." />
-      <PageHeader subtitle="Visual Showcase" title="Our Gallery" bgImage="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1600" />
+      <PageHeader subtitle="Visual Showcase" title="Our Gallery" bgImage={image4} />
 
       <section className="section-padding bg-white dark:bg-charcoal-950">
         <div className="container-custom">

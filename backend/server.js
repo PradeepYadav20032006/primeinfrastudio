@@ -24,6 +24,7 @@ const contactRoutes = require('./routes/contactRoutes');
 const careerRoutes = require('./routes/careerRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
+const chatbotRoutes = require('./routes/chatbotRoutes');
 
 const app = express();
 
@@ -72,6 +73,7 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/chat', chatbotRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
