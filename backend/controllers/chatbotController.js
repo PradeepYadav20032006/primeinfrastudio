@@ -90,6 +90,11 @@ Guidelines & Rules:
         parts: [{ text: msg.text }],
       }));
 
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('Content-Encoding', 'none');
+
     const chat = model.startChat({
       history: formattedHistory,
       generationConfig: {
@@ -97,20 +102,26 @@ Guidelines & Rules:
       },
     });
 
-    const result = await chat.sendMessage(message);
-    const response = await result.response;
-    const botText = response.text();
+    const resultStream = await chat.sendMessageStream(message);
 
-    res.status(200).json({
-      success: true,
-      text: botText,
-    });
+    for await (const chunk of resultStream.stream) {
+      const chunkText = chunk.text();
+      res.write(`data: ${JSON.stringify({ text: chunkText })}\n\n`);
+    }
+
+    res.write(`data: [DONE]\n\n`);
+    res.end();
   } catch (error) {
     console.error('Gemini API Error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'An error occurred while contacting the AI assistant: ' + error.message,
-    });
+    if (res.headersSent) {
+      res.write(`data: ${JSON.stringify({ error: error.message })}\n\n`);
+      res.end();
+    } else {
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while contacting the AI assistant: ' + error.message,
+      });
+    }
   }
 };
 

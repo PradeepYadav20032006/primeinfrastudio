@@ -11,6 +11,7 @@ const ChatbotWidget = () => {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [streaming, setStreaming] = useState(false);
   
   const messagesEndRef = useRef(null);
 
@@ -22,10 +23,10 @@ const ChatbotWidget = () => {
     if (open) {
       scrollToBottom();
     }
-  }, [messages, open, loading]);
+  }, [messages, open, loading, streaming]);
 
   const handleSend = async () => {
-    if (!input.trim() || loading) return;
+    if (!input.trim() || loading || streaming) return;
 
     const userText = input.trim();
     const userMsg = { from: 'user', text: userText };
@@ -36,34 +37,118 @@ const ChatbotWidget = () => {
     setLoading(true);
 
     try {
-      // Send the current message and history to the backend
-      const response = await customerApi.post('/chat', {
-        message: userText,
-        history: messages,
+      const apiBaseUrl = import.meta.env.VITE_API_URL || '/api';
+      const token = localStorage.getItem('pis_customer_token');
+
+      // Set up AbortController for a 60-second request timeout limit
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 seconds
+
+      // Send the current message and history to the backend via native fetch for stream support
+      const response = await fetch(`${apiBaseUrl}/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({
+          message: userText,
+          history: messages,
+        }),
+        signal: controller.signal,
       });
 
-      if (response.data && response.data.success) {
-        setMessages((prev) => [...prev, { from: 'bot', text: response.data.text }]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { 
-            from: 'bot', 
-            text: response.data?.message || "I'm sorry, I'm having trouble connecting to my brain right now. Please try again later." 
+      clearTimeout(timeoutId);
+
+      const contentType = response.headers.get('content-type') || '';
+      
+      // If it is not a stream (meaning it returned standard JSON error payload)
+      if (!response.ok || contentType.includes('application/json')) {
+        const errData = await response.json();
+        throw new Error(errData.message || "I'm sorry, I'm having trouble connecting to my brain right now. Please try again later.");
+      }
+
+      // Switch to streaming mode and turn off bouncing dots
+      setStreaming(true);
+      setLoading(false);
+
+      // Add a placeholder message for the bot immediately
+      setMessages((prev) => [...prev, { from: 'bot', text: '' }]);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let finished = false;
+      let botResponseText = '';
+      let buffer = '';
+
+      while (!finished) {
+        const { value, done } = await reader.read();
+        if (done) {
+          finished = true;
+          break;
+        }
+
+        buffer += decoder.decode(value, { stream: true });
+        const parts = buffer.split('\n\n');
+        buffer = parts.pop() || '';
+
+        for (const part of parts) {
+          const line = part.trim();
+          if (line.startsWith('data: ')) {
+            const dataStr = line.substring(6).trim();
+            if (dataStr === '[DONE]') {
+              finished = true;
+              break;
+            }
+
+            try {
+              const parsed = JSON.parse(dataStr);
+              if (parsed.error) {
+                throw new Error(parsed.error);
+              }
+              if (parsed.text) {
+                botResponseText += parsed.text;
+                // Update the last message in real-time
+                setMessages((prev) => {
+                  const updated = [...prev];
+                  updated[updated.length - 1] = { from: 'bot', text: botResponseText };
+                  return updated;
+                });
+              }
+            } catch (e) {
+              if (e.message.includes('API key') || e.message.includes('assistant')) {
+                throw e; // Rethrow actual API configuration errors
+              }
+              // Skip partial chunks
+            }
           }
-        ]);
+        }
       }
     } catch (err) {
       console.error('Chat error:', err);
-      setMessages((prev) => [
-        ...prev,
-        { 
-          from: 'bot', 
-          text: err.message || "Oops! Something went wrong. Please check your internet connection and try again." 
+      let errMsg = err.message || "Oops! Something went wrong. Please check your internet connection and try again.";
+      if (err.name === 'AbortError') {
+        errMsg = "The request timed out. Please check your internet connection or try again later.";
+      }
+      setMessages((prev) => {
+        const updated = [...prev];
+        const lastMsg = updated[updated.length - 1];
+        if (lastMsg && lastMsg.from === 'bot' && (lastMsg.text === '' || streaming)) {
+          updated[updated.length - 1] = { 
+            from: 'bot', 
+            text: errMsg
+          };
+        } else {
+          updated.push({ 
+            from: 'bot', 
+            text: errMsg
+          });
         }
-      ]);
+        return updated;
+      });
     } finally {
       setLoading(false);
+      setStreaming(false);
     }
   };
 
@@ -216,13 +301,13 @@ const ChatbotWidget = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                disabled={loading}
+                disabled={loading || streaming}
                 placeholder="Type a message..."
                 className="flex-1 input-field !py-2 text-sm bg-charcoal-50 dark:bg-charcoal-800 border-charcoal-200 dark:border-charcoal-700 focus:ring-amber-500 focus:border-amber-500 disabled:opacity-50 text-charcoal-800 dark:text-white"
               />
               <button 
                 onClick={handleSend} 
-                disabled={loading || !input.trim()}
+                disabled={loading || streaming || !input.trim()}
                 className="bg-amber-600 hover:bg-amber-700 disabled:bg-amber-600/50 disabled:cursor-not-allowed text-white p-2.5 rounded-md transition-colors cursor-pointer"
               >
                 <Send size={16} />
