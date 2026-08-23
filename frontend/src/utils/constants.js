@@ -2,7 +2,7 @@ export const COMPANY = {
   name: 'PrimeInfraStudio',
   president: 'Akhilesh Yadav',
   office: 'CRRR+PMP une, Maharashtra, India',
-  address: 'CRRR+6M9 Pune, Maharashtra, India',
+  address: '402, Laxmi Vishnu Park, Ambegaon Khurd, Pune, Maharashtra 411046, India',
   phone: '+919369737080',
   phoneRaw: '+919369737080',
   email: 'primeinfrastructure.design@gmail.com',
