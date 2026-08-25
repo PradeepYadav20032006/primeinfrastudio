@@ -6,8 +6,8 @@ import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
 
 const FALLBACK = [
-  { _id: 't1', clientName: 'Rohan Deshmukh', clientRole: 'Homeowner, Baner', rating: 5, message: 'PrimeInfraStudio transformed our vision into a stunning reality. Their attention to detail is unmatched.' },
-  { _id: 't2', clientName: 'Anjali Kulkarni', clientRole: 'Business Owner, Koregaon Park', rating: 5, message: 'Professional, punctual, and genuinely talented. Our penthouse interiors exceeded expectations.' },
+  { _id: 't1', clientName: 'Sachin Sir', clientRole: 'Homeowner, City Scape Rajaram Bridge', rating: 5, message: 'PrimeInfraStudio transformed our vision into a stunning reality. Their attention to detail is unmatched.' },
+  { _id: 't2', clientName: 'Anjali Kulkarni', clientRole: 'Homeowner, Warje', rating: 5, message: 'Professional, punctual, and genuinely talented. Our penthouse interiors exceeded expectations.' },
   { _id: 't3', clientName: 'Vikram Joshi', clientRole: 'Director, Horizon Corp', rating: 5, message: 'From planning to handover, the team kept us informed at every stage. Highly recommended for commercial projects.' },
 ];
 
