@@ -7,17 +7,19 @@ import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
 
 // Local images
-import image1 from '../assets/images/image1.jpg';
-import image2 from '../assets/images/image2.jpg';
-import image3 from '../assets/images/image3.jpg';
 import image4 from '../assets/images/image4.jpg';
+import restedki from '../assets/images/Restedki.jpg';
+import comm1 from '../assets/images/comm1.jpg';
+import resguad1 from '../assets/images/resguad1.jpg';
+import reno1 from '../assets/images/reno1.jpg';
 
 const CATEGORIES = ['All', 'Residential', 'Commercial', 'Interior Design', 'Renovation', 'Industrial'];
 
 const FALLBACK_PROJECTS = [
-  { _id: 'f1', slug: 'serene-villa-baner', title: 'Serene Villa, Baner', category: 'Residential', location: 'Baner, Pune', coverImage: image1, year: 2024, area: '4500 sq.ft' },
-  { _id: 'f2', slug: 'horizon-business-park', title: 'Horizon Business Park', category: 'Commercial', location: 'Hinjewadi, Pune', coverImage: image2, year: 2023, area: '85000 sq.ft' },
-  { _id: 'f3', slug: 'minimalist-penthouse', title: 'Minimalist Penthouse Interiors', category: 'Interior Design', location: 'Koregaon Park, Pune', coverImage: image3, year: 2024, area: '3200 sq.ft' },
+  { _id: 'f1', slug: 'serene-villa-baner', title: 'Serene Villa, Baner', category: 'Residential', location: 'Baner, Pune', coverImage: restedki, year: 2026, area: '4500 sq.ft' },
+  { _id: 'f2', slug: 'horizon-business-park', title: 'Horizon Business Park', category: 'Commercial', location: 'Hinjewadi, Pune', coverImage: comm1, year: 2026, area: '85000 sq.ft' },
+  { _id: 'f3', slug: 'minimalist-penthouse-interiors-1785675142578', title: 'Minimalist Penthouse Interiors', category: 'Interior Design', location: 'Koregaon Park, Pune', coverImage: resguad1, year: 2026, area: '3200 sq.ft' },
+  { _id: 'f4', slug: 'modern-apartment-renovation', title: 'Modern Apartment Renovation', category: 'Renovation', location: 'Kothrud, Pune', coverImage: reno1, year: 2026, area: '1800 sq.ft' },
 ];
 
 const Projects = () => {

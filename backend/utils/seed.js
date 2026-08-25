@@ -76,54 +76,67 @@ const run = async () => {
     console.log('Sample services created.');
   }
 
-  const projectCount = await Project.countDocuments();
-  if (projectCount === 0) {
-    await Project.insertMany([
-      {
-        title: 'Serene Villa, Baner',
-        category: 'Residential',
-        location: 'Baner, Pune',
-        clientName: 'Mr. R. Deshmukh',
-        description: 'A 4500 sq.ft luxury villa featuring minimalist architecture and an open courtyard design.',
-        coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200',
-        images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200'],
-        area: '4500 sq.ft',
-        duration: '10 months',
-        status: 'Completed',
-        featured: true,
-        tags: ['villa', 'luxury', 'residential'],
-      },
-      {
-        title: 'Horizon Business Park',
-        category: 'Commercial',
-        location: 'Hinjewadi, Pune',
-        clientName: 'Horizon Corp',
-        description: 'A modern 6-storey commercial complex with energy-efficient systems and flexible office layouts.',
-        coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200',
-        images: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200'],
-        area: '85000 sq.ft',
-        duration: '18 months',
-        status: 'Completed',
-        featured: true,
-        tags: ['commercial', 'office'],
-      },
-      {
-        title: 'Minimalist Penthouse Interiors',
-        category: 'Interior Design',
-        location: 'Koregaon Park, Pune',
-        clientName: 'Mrs. A. Kulkarni',
-        description: 'A warm, minimalist interior scheme for a 3200 sq.ft penthouse with custom joinery throughout.',
-        coverImage: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200',
-        images: ['https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200'],
-        area: '3200 sq.ft',
-        duration: '5 months',
-        status: 'Completed',
-        featured: true,
-        tags: ['interior', 'penthouse'],
-      },
-    ]);
-    console.log('Sample projects created.');
-  }
+  // Clear existing projects and seed with the new local images
+  await Project.deleteMany({});
+  await Project.insertMany([
+    {
+      title: 'Serene Villa, Baner',
+      category: 'Residential',
+      location: 'Baner, Pune',
+      clientName: 'Mr. R. Deshmukh',
+      description: 'A 4500 sq.ft luxury villa featuring minimalist architecture and an open courtyard design.',
+      coverImage: '/uploads/Restedki.jpg',
+      images: ['/uploads/Restekdi1.jpg', '/uploads/Restekdi2.jpg', '/uploads/Rsetekdi0.jpg'],
+      area: '4500 sq.ft',
+      duration: '10 months',
+      status: 'Completed',
+      featured: true,
+      tags: ['villa', 'luxury', 'residential'],
+    },
+    {
+      title: 'Horizon Business Park',
+      category: 'Commercial',
+      location: 'Hinjewadi, Pune',
+      clientName: 'Horizon Corp',
+      description: 'A modern 6-storey commercial complex with energy-efficient systems and flexible office layouts.',
+      coverImage: '/uploads/comm1.jpg',
+      images: ['/uploads/comm11.jpg', '/uploads/comm2.jpg', '/uploads/comm3.jpg'],
+      area: '85000 sq.ft',
+      duration: '18 months',
+      status: 'Completed',
+      featured: true,
+      tags: ['commercial', 'office'],
+    },
+    {
+      title: 'Minimalist Penthouse Interiors',
+      category: 'Interior Design',
+      location: 'Koregaon Park, Pune',
+      clientName: 'Mrs. A. Kulkarni',
+      description: 'A warm, minimalist interior scheme for a 3200 sq.ft penthouse with custom joinery throughout.',
+      coverImage: '/uploads/resguad1.jpg',
+      images: ['/uploads/resguad2.jpg'],
+      area: '3200 sq.ft',
+      duration: '5 months',
+      status: 'Completed',
+      featured: true,
+      tags: ['interior', 'penthouse'],
+    },
+    {
+      title: 'Modern Apartment Renovation',
+      category: 'Renovation',
+      location: 'Kothrud, Pune',
+      clientName: 'Mr. A. Joshi',
+      description: 'Bespoke renovation of a 15-year old apartment including modern kitchen, toilet fittings and full paint.',
+      coverImage: '/uploads/reno1.jpg',
+      images: ['/uploads/reno2.jpg', '/uploads/reno3.jpg'],
+      area: '1800 sq.ft',
+      duration: '3 months',
+      status: 'Completed',
+      featured: true,
+      tags: ['renovation', 'apartment', 'modern'],
+    },
+  ]);
+  console.log('Sample projects created/re-seeded.');
 
   const testimonialCount = await Testimonial.countDocuments();
   if (testimonialCount === 0) {

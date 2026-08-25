@@ -246,7 +246,7 @@ const ChatbotWidget = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-40 w-[90vw] max-w-sm h-[32rem] bg-white dark:bg-charcoal-900 rounded-2xl shadow-2xl border border-charcoal-100 dark:border-charcoal-800 flex flex-col overflow-hidden"
+            className="fixed sm:bottom-24 sm:right-6 top-0 sm:top-auto bottom-0 right-0 z-50 w-full sm:w-[90vw] sm:max-w-sm h-full sm:h-[32rem] bg-white dark:bg-charcoal-900 sm:rounded-2xl shadow-2xl border border-charcoal-100 dark:border-charcoal-800 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-charcoal-900 dark:bg-charcoal-950 text-white px-4 py-3 flex items-center justify-between border-b border-charcoal-800">

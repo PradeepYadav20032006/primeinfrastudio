@@ -8,8 +8,8 @@ import api from '../utils/api';
 import { COMPANY } from '../utils/constants';
 
 // Local images
-import image1 from '../assets/images/image1.jpg';
-import image2 from '../assets/images/image2.jpg';
+import restedki from '../assets/images/Restedki.jpg';
+import comm1 from '../assets/images/comm1.jpg';
 
 const ICONS = { Building2, Home: HomeIcon, Sofa, Hammer };
 
@@ -60,7 +60,7 @@ const Home = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              `linear-gradient(rgba(10,12,16,0.55), rgba(10,12,16,0.85)), url(${image1})`,
+              `linear-gradient(rgba(10,12,16,0.55), rgba(10,12,16,0.85)), url(${restedki})`,
           }}
         />
         <div className="relative z-10 container-custom text-center pt-24">
@@ -131,7 +131,7 @@ const Home = () => {
             className="relative"
           >
             <img
-              src={image2}
+              src={comm1}
               alt="PrimeInfraStudio construction site"
               className="rounded-2xl shadow-2xl w-full object-cover h-[420px]"
             />
