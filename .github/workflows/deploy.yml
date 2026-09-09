@@ -75,7 +75,7 @@ jobs:
             fi
 
             echo "==== Ensuring persistent directories exist ===="
-            mkdir -p /home/${{ secrets.EC2_USER }}/uploads
+            mkdir -p "$HOME/uploads"
 
             echo "==== Running updated container on EC2 ===="
             docker run -d \
@@ -83,8 +83,8 @@ jobs:
               --restart unless-stopped \
               -p ${{ env.PORT }}:${{ env.PORT }} \
               --memory="750m" \
-              --env-file /home/${{ secrets.EC2_USER }}/.env \
-              -v /home/${{ secrets.EC2_USER }}/uploads:/app/uploads \
+              --env-file "$HOME/.env" \
+              -v "$HOME/uploads:/app/uploads" \
               ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
             echo "==== Cleaning up unused dangling Docker images ===="
