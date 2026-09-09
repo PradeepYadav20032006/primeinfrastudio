@@ -5,6 +5,7 @@ import { Search, Calendar, User, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const FALLBACK_BLOGS = [
   {
@@ -76,7 +77,7 @@ const Blog = () => {
                   className="card-hover bg-charcoal-50 dark:bg-charcoal-900 rounded-2xl overflow-hidden border border-charcoal-100 dark:border-charcoal-800"
                 >
                   <Link to={`/blog/${post.slug}`}>
-                    <img src={post.coverImage} alt={post.title} className="w-full h-52 object-cover" />
+                    <img src={resolveImageUrl(post.coverImage)} alt={post.title} className="w-full h-52 object-cover" />
                     <div className="p-6">
                       <span className="text-xs uppercase tracking-widest text-amber-600">{post.category}</span>
                       <h3 className="text-lg font-display font-bold text-charcoal-900 dark:text-white mt-2 mb-3">{post.title}</h3>

@@ -4,6 +4,7 @@ import { Star, Quote } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 import api from '../utils/api';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const FALLBACK = [
   { _id: 't1', clientName: 'Sachin Sir', clientRole: 'Homeowner, Scape Rajaram Bridge', rating: 5, message: 'PrimeInfraStudio transformed our vision into a stunning reality. Their attention to detail is unmatched.' },
@@ -46,7 +47,7 @@ const Testimonials = () => {
               <p className="text-charcoal-600 dark:text-charcoal-300 mb-6 leading-relaxed">"{t.message}"</p>
               <div className="flex items-center gap-3">
                 {t.clientImage ? (
-                  <img src={t.clientImage} alt={t.clientName} className="w-11 h-11 rounded-full object-cover" />
+                  <img src={resolveImageUrl(t.clientImage)} alt={t.clientName} className="w-11 h-11 rounded-full object-cover" />
                 ) : (
                   <div className="w-11 h-11 rounded-full bg-amber-600 text-white flex items-center justify-center font-semibold">
                     {t.clientName.charAt(0)}

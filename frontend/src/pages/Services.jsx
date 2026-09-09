@@ -12,6 +12,7 @@ import image2 from '../assets/images/image2.jpg';
 import image3 from '../assets/images/image3.jpg';
 import image4 from '../assets/images/image4.jpg';
 import image5 from '../assets/images/image5.jpg';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const ICONS = { Building2, Home: HomeIcon, Sofa, Hammer };
 
@@ -83,7 +84,7 @@ const Services = () => {
                 transition={{ duration: 0.6 }}
                 className={`grid md:grid-cols-2 gap-10 items-center scroll-mt-28 ${reversed ? 'md:[&>*:first-child]:order-2' : ''}`}
               >
-                <img src={service.image} alt={service.title} className="rounded-2xl shadow-xl w-full h-96 object-cover" />
+                <img src={resolveImageUrl(service.image, image1)} alt={service.title} className="rounded-2xl shadow-xl w-full h-96 object-cover" />
                 <div>
                   <div className="w-14 h-14 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-5">
                     <Icon size={26} className="text-amber-600" />

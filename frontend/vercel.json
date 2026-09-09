@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/uploads/:path*",
-      "destination": "https://primeinfrastudio-bfhv.vercel.app/uploads/:path*"
+      "destination": "https://api.primeinfrastudio.com/uploads/:path*"
     },
     {
       "source": "/api/:path*",
-      "destination": "https://primeinfrastudio-bfhv.vercel.app/api/:path*"
+      "destination": "https://api.primeinfrastudio.com/api/:path*"
     },
     {
       "source": "/((?!api|uploads).*)",

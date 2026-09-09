@@ -12,6 +12,7 @@ import restedki from '../assets/images/Restedki.jpg';
 import comm1 from '../assets/images/comm1.jpg';
 import resguad1 from '../assets/images/resguad1.jpg';
 import reno1 from '../assets/images/reno1.jpg';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const CATEGORIES = ['All', 'Residential', 'Commercial', 'Interior Design', 'Renovation', 'Industrial'];
 
@@ -99,7 +100,7 @@ const Projects = () => {
                     transition={{ duration: 0.4 }}
                   >
                     <Link to={`/projects/${p.slug}`} className="group block rounded-2xl overflow-hidden shadow-lg h-96 relative">
-                      <img src={p.coverImage} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <img src={resolveImageUrl(p.coverImage)} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 p-6 text-white w-full">
                         <span className="text-xs uppercase tracking-widest text-amber-400">{p.category}</span>

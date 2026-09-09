@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import SEO from '../components/SEO';
 import api from '../utils/api';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -40,7 +41,7 @@ const BlogDetail = () => {
             <span className="flex items-center gap-1"><User size={14} /> {post.author}</span>
             <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(post.createdAt).toLocaleDateString('en-IN')}</span>
           </div>
-          <img src={post.coverImage} alt={post.title} className="rounded-2xl shadow-xl w-full h-96 object-cover mb-10" />
+          <img src={resolveImageUrl(post.coverImage)} alt={post.title} className="rounded-2xl shadow-xl w-full h-96 object-cover mb-10" />
           <div className="prose dark:prose-invert max-w-none text-charcoal-600 dark:text-charcoal-300 leading-relaxed whitespace-pre-line">
             {post.content}
           </div>

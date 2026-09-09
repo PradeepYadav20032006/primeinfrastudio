@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Calendar, Ruler, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import api from '../utils/api';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -47,14 +48,14 @@ const ProjectDetail = () => {
       <section className="section-padding bg-white dark:bg-charcoal-950">
         <div className="container-custom grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
-            <img src={project.coverImage} alt={project.title} className="rounded-2xl shadow-xl w-full h-[420px] object-cover mb-8" />
+            <img src={resolveImageUrl(project.coverImage)} alt={project.title} className="rounded-2xl shadow-xl w-full h-[420px] object-cover mb-8" />
             <h2 className="text-2xl font-display font-bold text-charcoal-900 dark:text-white mb-4">Project Overview</h2>
             <p className="text-charcoal-500 dark:text-charcoal-400 leading-relaxed mb-8">{project.description}</p>
 
             {project.images?.length > 1 && (
               <div className="grid sm:grid-cols-2 gap-4">
                 {project.images.slice(1).map((img, i) => (
-                  <img key={i} src={img} alt={`${project.title} ${i + 2}`} className="rounded-xl h-56 w-full object-cover" />
+                  <img key={i} src={resolveImageUrl(img)} alt={`${project.title} ${i + 2}`} className="rounded-xl h-56 w-full object-cover" />
                 ))}
               </div>
             )}

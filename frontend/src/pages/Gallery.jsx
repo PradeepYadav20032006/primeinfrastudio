@@ -11,6 +11,7 @@ import image2 from '../assets/images/image2.jpg';
 import image3 from '../assets/images/image3.jpg';
 import image4 from '../assets/images/image4.jpg';
 import image5 from '../assets/images/image5.jpg';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const CATEGORIES = ['All', 'Interior', 'Exterior', 'Construction', 'Renovation', 'Landscape'];
 
@@ -73,7 +74,7 @@ const Gallery = () => {
                 onClick={() => setLightboxIndex(i)}
                 className="block w-full break-inside-avoid rounded-xl overflow-hidden group relative"
               >
-                <img src={img.image} alt={img.title} className="w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={resolveImageUrl(img.image)} alt={img.title} className="w-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-end p-4">
                   <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">{img.title}</p>
                 </div>
@@ -84,7 +85,7 @@ const Gallery = () => {
       </section>
 
       <Lightbox
-        images={filtered.map((f) => f.image)}
+        images={filtered.map((f) => resolveImageUrl(f.image))}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onNext={() => setLightboxIndex((prev) => (prev + 1) % filtered.length)}

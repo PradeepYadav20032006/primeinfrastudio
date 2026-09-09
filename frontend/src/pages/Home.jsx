@@ -10,6 +10,7 @@ import { COMPANY } from '../utils/constants';
 // Local images
 import restedki from '../assets/images/Restedki.jpg';
 import comm1 from '../assets/images/comm1.jpg';
+import { resolveImageUrl } from '../utils/imageHelper';
 
 const ICONS = { Building2, Home: HomeIcon, Sofa, Hammer };
 
@@ -226,7 +227,7 @@ const Home = () => {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="group relative rounded-2xl overflow-hidden shadow-lg h-96"
                 >
-                  <img src={p.coverImage} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src={resolveImageUrl(p.coverImage)} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 p-6 text-white">
                     <span className="text-xs uppercase tracking-widest text-amber-400">{p.category}</span>
